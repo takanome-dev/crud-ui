@@ -1,0 +1,14 @@
+.status_container {
+	align-items: center;
+	display: flex;
+}
+
+.status_state {
+	border-radius: 50%;
+	height: 10px;
+	margin-right: 5px;
+	width: 10px;
+}
+
+.status_name {
+}

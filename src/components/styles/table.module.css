@@ -1,0 +1,11 @@
+.table_head {
+	/* background-color: white; */
+}
+
+.table_header {
+	text-align: left;
+}
+
+.table_row {
+	background-color: var(--white);
+}
