@@ -1,41 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import Options from "./Options";
 import Status from "./Status";
-import styles from "./styles/table.module.css";
 import UserAvatar from "./UserAvatar";
 
-const users = [
-	{
-		name: "Takanome Dev",
-		email: "takanome@gmail.com",
-		location: "Senegal",
-		phone: "+919876543215",
-	},
-	{
-		name: "Takanome Dev",
-		email: "takanome@gmail.com",
-		location: "Senegal",
-		phone: "+919876543215",
-	},
-	{
-		name: "Takanome Dev",
-		email: "takanome@gmail.com",
-		location: "Senegal",
-		phone: "+919876543215",
-	},
-];
+// const users = [
+// 	{
+// 		id: 1,
+// 		name: "Takanome Dev",
+// 		email: "takanome@gmail.com",
+// 		active: true,
+// 		location: "Senegal",
+// 		phone: "+919876543215",
+// 	},
+// 	{
+// 		id: 2,
+// 		name: "Takanome Dev",
+// 		email: "takanome@gmail.com",
+// 		active: false,
+// 		location: "Senegal",
+// 		phone: "+919876543215",
+// 	},
+// 	{
+// 		id: 3,
+// 		name: "Takanome Dev",
+// 		email: "takanome@gmail.com",
+// 		active: true,
+// 		location: "Senegal",
+// 		phone: "+919876543215",
+// 	},
+// ];
 
-export default function TableBody() {
+export default function TableBody({ users }) {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<tbody>
-			{users.map((u, i) => (
-				<tr key={i} className={styles.table_row}>
+			{users.map((u) => (
+				<tr key={u.id}>
 					<td>
 						<UserAvatar name={u.name} email={u.email} />
 					</td>
 					<td>
-						<Status active={false} />
+						<Status status={u.status} />
 					</td>
 					<td>{u.location}</td>
 					<td>{u.phone}</td>
@@ -43,7 +50,7 @@ export default function TableBody() {
 						<Button title="Contact" />
 					</td>
 					<td>
-						<Options />
+						<Options isOpen={isOpen} setIsOpen={setIsOpen} />
 					</td>
 				</tr>
 			))}

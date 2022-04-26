@@ -1,7 +1,6 @@
 .user_avatar {
 	display: flex;
 	align-items: center;
-	/* justify-content: center; */
 }
 
 .user_img {
@@ -20,12 +19,14 @@
 
 .user_info {
 	margin-left: 10px;
-	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .user_name {
 	font-weight: bold;
 	font-size: 20px;
+	text-align: left;
 }
 
 .user_mail {

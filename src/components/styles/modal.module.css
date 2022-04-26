@@ -1,16 +1,31 @@
-.overlay {
-	/* background-color: rgba(0, 0, 0, 0.2); */
+/* .overlay {
+	background-color: var(--overlay-bg);
 	inset: 0;
 	position: absolute;
+} */
+
+/* .container {
+	animation: slideIn var(--animation-duration) var(--animation-timing-curve);
+} */
+
+@keyframes slideIn {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
 }
 
 .modal {
 	background-color: var(--white);
 	border-radius: 10px;
-	/* left: 50%; */
-	padding: 15px 0;
-	position: absolute;
+	left: 50%;
+	max-width: 400px;
+	margin: 0 10px;
+	padding: 40px 20px;
+	position: fixed;
 	transform: translate(-50%, -50%);
-	/* top: 50%; */
-	/* z-index: 2; */
+	top: 50%;
+	width: 100%;
 }

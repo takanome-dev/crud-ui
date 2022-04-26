@@ -1,9 +1,37 @@
-.options_container {
+/* .container {
+	position: relative;
+} */
+
+.button {
 	color: var(--blue);
 	cursor: pointer;
+	border: none;
+	background: none;
 }
 
-.options_item {
+.modal {
+	display: none;
+	position: absolute;
+	inset: 0;
+	background-color: var(--overlay-bg);
+	z-index: 2;
+}
+
+.modal.open {
+	display: initial;
+}
+
+.content {
+	background-color: var(--white);
+	border-radius: 10px;
+	padding: 10px 0;
+	position: absolute;
+	right: 2%;
+	top: 40%;
+	width: 130px;
+}
+
+.item {
 	align-items: center;
 	cursor: pointer;
 	display: flex;
@@ -11,10 +39,10 @@
 	width: 100%;
 }
 
-.options_item:hover {
+.item:hover {
 	background-color: var(--light-dark);
 }
 
-.options_item_name {
+.item_name {
 	margin-left: 10px;
 }

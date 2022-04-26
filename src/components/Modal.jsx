@@ -1,22 +1,14 @@
 import React from "react";
+import Overlay from "./Overlay";
 import styles from "./styles/modal.module.css";
 
-export default function Modal({
-	bgColor = "var(--overlay-bg)",
-	children,
-	left = "50%",
-	top = "50%",
-	width,
-}) {
+export default function Modal({ children, isOpen = false, handleClose }) {
+	if (!isOpen) return null;
+
 	return (
-		<>
-			<div
-				className={styles.overlay}
-				style={{ backgroundColor: bgColor }}
-			></div>
-			<div className={styles.modal} style={{ width, top, left }}>
-				{children}
-			</div>
-		</>
+		<div className={styles.container}>
+			<Overlay handleClose={handleClose} bgColor="var(--overlay-bg)" />
+			<div className={styles.modal}>{children}</div>
+		</div>
 	);
 }

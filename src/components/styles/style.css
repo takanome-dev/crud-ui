@@ -3,13 +3,17 @@
 :root {
 	--animation-duration: 300ms;
 	--animation-timing-curve: ease-in-out;
+	--tr-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
 	--background: #f9f9f9;
+	--dark-blue: #016ada;
 	--blue: #007bff;
 	--dark: #212529;
-	--light-gray: #6c757d;
+	--gray: #6c757d;
+	--light-gray: #6c757d6c;
 	--green: #28a745;
 	--light-blue: #007bff6c;
+	--lightest-blue: #007bff3f;
 	--light-dark: #2125292a;
 	--overlay-bg: rgba(0, 0, 0, 0.2);
 	--red: #dc3545;
@@ -29,15 +33,27 @@ body {
 }
 
 .container {
-	max-width: 720px;
-	/* width: 100%; */
-	margin: 100px auto;
+	max-width: 1140px;
+	margin: 100px 20px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 10px;
+}
+
+.header button {
+	border: 1px solid var(--light-dark);
+	background-color: var(--white);
+	color: var(--dark);
 }
 
 .danger {
 	color: var(--red);
 }
 
-.table {
-	width: 100%;
+.overlay {
+	inset: 0;
+	position: fixed;
 }

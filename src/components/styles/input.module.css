@@ -1,0 +1,35 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+	position: relative;
+	width: 100%;
+}
+
+.label {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.input,
+.select {
+	color: var(--dark);
+	background-color: var(--background);
+	border: none;
+	border-radius: 5px;
+	padding: 15px;
+	transition: outline 100ms ease;
+}
+
+.input::placeholder {
+	color: var(--light-gray);
+}
+
+.input:focus,
+.select:focus {
+	outline: 3px solid var(--lightest-blue);
+}
+
+.select option {
+	background-color: var(--background);
+}

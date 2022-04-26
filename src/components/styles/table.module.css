@@ -1,11 +1,40 @@
-.table_head {
-	/* background-color: white; */
-}
-
-.table_header {
+.table {
+	border-collapse: separate;
+	border-spacing: 0 15px;
+	padding: 10px;
 	text-align: left;
+	width: 100%;
 }
 
-.table_row {
+.table th,
+.table td {
+	padding: 15px 10px;
+}
+
+.table tbody td {
+	text-align: center;
+}
+
+.table tbody td:first-child {
+	border-radius: 10px 0 0 10px;
+}
+
+.table tbody td:last-child {
+	border-radius: 0 10px 10px 0;
+}
+
+.table tbody tr {
 	background-color: var(--white);
+	box-shadow: var(--tr-shadow);
+	/* position: relative; */
+}
+
+.empty {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.empty p {
+	font-size: 20px;
 }
