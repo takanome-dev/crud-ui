@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/TAKANOME-DEV/crud-ui/static/css/main.ffdde49f.css",
+    "main.js": "/TAKANOME-DEV/crud-ui/static/js/main.e2ac8ed1.js",
+    "static/media/avatar.jpg": "/TAKANOME-DEV/crud-ui/static/media/avatar.d29ac02ac3482db2d423.jpg",
+    "index.html": "/TAKANOME-DEV/crud-ui/index.html",
+    "main.ffdde49f.css.map": "/TAKANOME-DEV/crud-ui/static/css/main.ffdde49f.css.map",
+    "main.e2ac8ed1.js.map": "/TAKANOME-DEV/crud-ui/static/js/main.e2ac8ed1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ffdde49f.css",
+    "static/js/main.e2ac8ed1.js"
+  ]
+}
