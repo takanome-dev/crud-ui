@@ -2,7 +2,11 @@ import React from "react";
 import Overlay from "./Overlay";
 import styles from "./styles/options.module.css";
 
-const OptionsModal = ({ handleEdit, handleDelete, handleClose }) => {
+export default function OptionsModal({
+	handleEdit,
+	handleDelete,
+	handleClose,
+}) {
 	return (
 		<>
 			<Overlay handleClose={handleClose} bgColor="transparent" />
@@ -18,6 +22,4 @@ const OptionsModal = ({ handleEdit, handleDelete, handleClose }) => {
 			</div>
 		</>
 	);
-};
-
-export default OptionsModal;
+}

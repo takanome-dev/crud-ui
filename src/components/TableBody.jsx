@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Context } from "../context/Context";
+import { Context } from "../context/context";
 import formatPhoneNumber from "../utils/formatPhoneNumber";
 import Button from "./Button";
 import Options from "./Options";
@@ -7,15 +7,15 @@ import OptionsModal from "./OptionsModal";
 import Status from "./Status";
 import UserAvatar from "./UserAvatar";
 
-export default function TableBody({ users, setOpenModal }) {
+export default function TableBody({ users }) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [currentUserId, setCurrentUserId] = useState(0);
-	const { onDeleteUser, onSetCurrentUser } = useContext(Context);
+	const { onDeleteUser, onSetCurrentUser, dispatch } = useContext(Context);
 
 	const handleEdit = (id) => {
 		setIsOpen(false);
 		onSetCurrentUser(id);
-		setOpenModal(true);
+		dispatch({ type: "SET_OPEN_MODAL", payload: true });
 	};
 
 	const handleDelete = (id) => {

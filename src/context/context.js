@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import storage from "../services/storage";
-import { GET_USERS, SET_CURRENT_USER } from "./constants";
+import { GET_USERS, SET_CURRENT_USER, SET_OPEN_MODAL } from "./constants";
 import reducer from "./reducer";
 
 const initialState = {
@@ -13,6 +13,7 @@ const initialState = {
 		phone: "",
 	},
 	users: [],
+	openModal: false,
 };
 
 export const Context = createContext(initialState);
@@ -33,6 +34,12 @@ export default function Provider({ children }) {
 	const handleUpdateUser = async (updatedUser) => {
 		const users = await storage.updateUser(updatedUser);
 		dispatch({ type: GET_USERS, payload: users });
+		dispatch({ type: SET_CURRENT_USER, payload: initialState.currentUser });
+	};
+
+	const handleDeleteUser = async (id) => {
+		const users = await storage.deleteUser(id);
+		dispatch({ type: GET_USERS, payload: users });
 	};
 
 	const handleCurrentUser = (id) => {
@@ -40,9 +47,12 @@ export default function Provider({ children }) {
 		dispatch({ type: SET_CURRENT_USER, payload: user });
 	};
 
-	const handleDeleteUser = async (id) => {
-		const users = await storage.deleteUser(id);
-		dispatch({ type: GET_USERS, payload: users });
+	const handleOpenModal = (booleanState) => {
+		dispatch({ type: SET_OPEN_MODAL, payload: booleanState });
+
+		if (!booleanState) {
+			dispatch({ type: SET_CURRENT_USER, payload: initialState.currentUser });
+		}
 	};
 
 	useEffect(() => {
@@ -53,10 +63,13 @@ export default function Provider({ children }) {
 	const value = {
 		users: state.users,
 		currentUser: state.currentUser,
+		openModal: state.openModal,
+		dispatch,
 		onSetCurrentUser: handleCurrentUser,
 		onAddUser: handleAddUser,
 		onUpdateUser: handleUpdateUser,
 		onDeleteUser: handleDeleteUser,
+		onOpenModal: handleOpenModal,
 	};
 
 	return <Context.Provider value={value}>{children}</Context.Provider>;

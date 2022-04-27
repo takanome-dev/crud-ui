@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Context } from "../context/Context";
+import { Context } from "../context/context";
 import styles from "./styles/table.module.css";
 import TableBody from "./TableBody";
 import TableHeader from "./TableHeader";
 
-export default function Table({ setOpenModal }) {
+export default function Table() {
 	const { users } = useContext(Context);
 
 	return (
@@ -12,7 +12,7 @@ export default function Table({ setOpenModal }) {
 			{users.length > 0 ? (
 				<table className={styles.table}>
 					<TableHeader />
-					<TableBody users={users} setOpenModal={setOpenModal} />
+					<TableBody users={users} />
 				</table>
 			) : (
 				<div className={styles.empty}>

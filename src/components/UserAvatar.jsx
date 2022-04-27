@@ -2,7 +2,7 @@ import React from "react";
 import avatar from "../assets/avatar.jpg";
 import styles from "./styles/user-avatar.module.css";
 
-const UserAvatar = ({ name, email }) => {
+export default function UserAvatar({ name, email }) {
 	return (
 		<div className={styles.user_avatar}>
 			<div className={styles.user_img}>
@@ -14,5 +14,4 @@ const UserAvatar = ({ name, email }) => {
 			</div>
 		</div>
 	);
-};
-export default UserAvatar;
+}

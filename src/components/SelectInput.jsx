@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles/input.module.css";
 
-const SelectInput = ({ name, label, ...rest }) => {
+export default function SelectInput({ name, label, ...rest }) {
 	return (
 		<div className={styles.container}>
 			<label htmlFor={name} className={styles.label}>
@@ -13,6 +13,4 @@ const SelectInput = ({ name, label, ...rest }) => {
 			</select>
 		</div>
 	);
-};
-
-export default SelectInput;
+}

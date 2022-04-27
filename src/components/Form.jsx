@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
-import { Context } from "../context/Context";
+import { Context } from "../context/context";
 import useForm from "../hooks/useForm";
 import Button from "./Button";
 import Input from "./Input";
 import Modal from "./Modal";
 import SelectInput from "./SelectInput";
 
-export default function Form({ openModal, setOpenModal }) {
-	const { currentUser, onAddUser, onUpdateUser } = useContext(Context);
+export default function Form() {
+	const { currentUser, onAddUser, onUpdateUser, onOpenModal } =
+		useContext(Context);
 	const { clearForm, inputs, handleChange } = useForm(currentUser);
 
 	const handleSubmit = async (e) => {
@@ -15,12 +16,12 @@ export default function Form({ openModal, setOpenModal }) {
 
 		if (currentUser.id) onUpdateUser(inputs);
 		else onAddUser(inputs);
-		setOpenModal(false);
+		onOpenModal(false);
 		clearForm();
 	};
 
 	return (
-		<Modal openModal={openModal} handleClose={() => setOpenModal(false)}>
+		<Modal>
 			<form onSubmit={handleSubmit}>
 				<Input
 					label="Name"
@@ -65,7 +66,7 @@ export default function Form({ openModal, setOpenModal }) {
 					onChange={handleChange}
 					required
 				/>
-				<Button title="Add a new user" />
+				<Button title={currentUser.id ? "Update user" : "Add a new user"} />
 			</form>
 		</Modal>
 	);

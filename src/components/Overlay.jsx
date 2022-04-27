@@ -1,6 +1,6 @@
 import React from "react";
 
-const Overlay = ({ bgColor, handleClose }) => {
+export default function Overlay({ bgColor, handleClose }) {
 	return (
 		<div
 			className="overlay"
@@ -8,6 +8,4 @@ const Overlay = ({ bgColor, handleClose }) => {
 			style={{ backgroundColor: bgColor }}
 		></div>
 	);
-};
-
-export default Overlay;
+}
