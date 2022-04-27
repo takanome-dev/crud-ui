@@ -13,10 +13,10 @@
 
 .input,
 .select {
-	color: var(--dark);
 	background-color: var(--background);
 	border: none;
 	border-radius: 5px;
+	color: var(--dark);
 	padding: 15px;
 	transition: outline 100ms ease;
 }

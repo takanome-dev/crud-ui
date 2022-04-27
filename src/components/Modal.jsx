@@ -2,8 +2,8 @@ import React from "react";
 import Overlay from "./Overlay";
 import styles from "./styles/modal.module.css";
 
-export default function Modal({ children, isOpen = false, handleClose }) {
-	if (!isOpen) return null;
+export default function Modal({ children, openModal, handleClose }) {
+	if (!openModal) return null;
 
 	return (
 		<div className={styles.container}>

@@ -1,33 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../context/Context";
 import useForm from "../hooks/useForm";
-import storage from "../services/storage";
 import Button from "./Button";
 import Input from "./Input";
 import Modal from "./Modal";
 import SelectInput from "./SelectInput";
 
-const initialState = {
-	name: "",
-	email: "",
-	status: "Active",
-	location: "",
-	phone: "",
-};
-
-export default function Form({ openModal, setIsOpen, setUsers }) {
-	const { clearForm, inputs, handleChange } = useForm(initialState);
+export default function Form({ openModal, setOpenModal }) {
+	const { currentUser, onAddUser, onUpdateUser } = useContext(Context);
+	const { clearForm, inputs, handleChange } = useForm(currentUser);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const users = await storage.addUser(inputs);
-		setUsers(users);
-		setIsOpen(false);
+		if (currentUser.id) onUpdateUser(inputs);
+		else onAddUser(inputs);
+		setOpenModal(false);
 		clearForm();
 	};
 
 	return (
-		<Modal isOpen={openModal} handleClose={() => setIsOpen(false)}>
+		<Modal openModal={openModal} handleClose={() => setOpenModal(false)}>
 			<form onSubmit={handleSubmit}>
 				<Input
 					label="Name"
@@ -66,8 +59,8 @@ export default function Form({ openModal, setIsOpen, setUsers }) {
 				<Input
 					label="Phone"
 					name="phone"
-					type="number"
-					placeholder="+97 7 123456"
+					type="text"
+					placeholder="77 123 45 67"
 					value={inputs.phone}
 					onChange={handleChange}
 					required

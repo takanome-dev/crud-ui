@@ -1,38 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Context } from "../context/Context";
+import formatPhoneNumber from "../utils/formatPhoneNumber";
 import Button from "./Button";
 import Options from "./Options";
+import OptionsModal from "./OptionsModal";
 import Status from "./Status";
 import UserAvatar from "./UserAvatar";
 
-// const users = [
-// 	{
-// 		id: 1,
-// 		name: "Takanome Dev",
-// 		email: "takanome@gmail.com",
-// 		active: true,
-// 		location: "Senegal",
-// 		phone: "+919876543215",
-// 	},
-// 	{
-// 		id: 2,
-// 		name: "Takanome Dev",
-// 		email: "takanome@gmail.com",
-// 		active: false,
-// 		location: "Senegal",
-// 		phone: "+919876543215",
-// 	},
-// 	{
-// 		id: 3,
-// 		name: "Takanome Dev",
-// 		email: "takanome@gmail.com",
-// 		active: true,
-// 		location: "Senegal",
-// 		phone: "+919876543215",
-// 	},
-// ];
-
-export default function TableBody({ users }) {
+export default function TableBody({ users, setOpenModal }) {
 	const [isOpen, setIsOpen] = useState(false);
+	const [currentUserId, setCurrentUserId] = useState(0);
+	const { onDeleteUser, onSetCurrentUser } = useContext(Context);
+
+	const handleEdit = (id) => {
+		setIsOpen(false);
+		onSetCurrentUser(id);
+		setOpenModal(true);
+	};
+
+	const handleDelete = (id) => {
+		setIsOpen(false);
+		onDeleteUser(id);
+	};
+
+	const handleClose = () => setIsOpen(false);
 
 	return (
 		<tbody>
@@ -45,12 +36,22 @@ export default function TableBody({ users }) {
 						<Status status={u.status} />
 					</td>
 					<td>{u.location}</td>
-					<td>{u.phone}</td>
+					<td>{formatPhoneNumber(u.phone)}</td>
 					<td>
 						<Button title="Contact" />
 					</td>
-					<td>
-						<Options isOpen={isOpen} setIsOpen={setIsOpen} />
+					<td id={u.id}>
+						<Options
+							setIsOpen={setIsOpen}
+							setCurrentUserId={setCurrentUserId}
+						/>
+						{isOpen && currentUserId === u.id && (
+							<OptionsModal
+								handleClose={handleClose}
+								handleDelete={() => handleDelete(u.id)}
+								handleEdit={() => handleEdit(u.id)}
+							/>
+						)}
 					</td>
 				</tr>
 			))}
